@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Результаты</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
     <script src="js/results.js" defer></script>
 </head>
 <body>
-    <div class="results-container">
+    <div class="container">
+        <h1>Результаты Олимпиады по Информатике</h1>
         <div id="results"></div>
-        <button onclick="openEmailModal()">Отправить результаты на почту</button>
-    </div>
-    <div id="emailModal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <span class="close" onclick="closeEmailModal()">&times;</span>
-            <h2>Введите ваш email</h2>
-            <input type="email" id="emailInput" placeholder="Ваш email">
-            <button onclick="sendEmail()">Отправить</button>
+        <button onclick="openEmailModal()">Отправить результаты на email</button>
+
+        <div id="emailModal" style="display:none;">
+            <div class="modal-content">
+                <span onclick="closeEmailModal()" class="close">&times;</span>
+                <h2>Введите ваш email для отправки результатов</h2>
+                <input type="email" id="emailInput" placeholder="Ваш email">
+                <button onclick="sendEmail()">Отправить</button>
+            </div>
         </div>
     </div>
 </body>
