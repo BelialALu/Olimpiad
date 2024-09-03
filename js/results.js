@@ -1,12 +1,10 @@
-// Убедитесь, что это в начале вашего results.js
 document.addEventListener('DOMContentLoaded', displayResults);
 
 (function () {
-    emailjs.init("YOUR_PUBLIC_API_KEY");  // Замените YOUR_PUBLIC_API_KEY на ваш Public API Key
+    emailjs.init("Q5mH9WW5IYLU5Qlm1");  // Замените YOUR_PUBLIC_API_KEY на ваш Public API Key
 })();
 
 const correctAnswers = {
-    "informatics": {
         "1": "10",
     	"2": "680",
   	    "3": "Ethernet",
@@ -14,7 +12,6 @@ const correctAnswers = {
     	"5": "A2B6",
     	"6": "алгоритм",
     	"7": "1111101",
-    }
 };
 
 function getQueryParam(param) {
@@ -25,17 +22,7 @@ function getQueryParam(param) {
 function displayResults() {
     const subject = getQueryParam('subject');
     const answers = JSON.parse(localStorage.getItem(`quizAnswers_${subject}`));
-    if (!answers) {
-        document.getElementById('results').innerHTML = '<p>Нет данных для отображения.</p>';
-        return;
-    }
-
     const correctAnswersForSubject = correctAnswers[subject];
-    if (!correctAnswersForSubject) {
-        document.getElementById('results').innerHTML = '<p>Неверный предмет.</p>';
-        return;
-    }
-
     let correctCount = 0;
     let resultsHtml = '';
 
@@ -64,7 +51,7 @@ function sendEmail() {
     const subject = getQueryParam('subject');
     const incorrectAnswers = getIncorrectAnswers(subject);
     if (email) {
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        emailjs.send("service_nj9r4m3", "template_fio3l8v", {
             to_email: email,
             incorrect_answers: incorrectAnswers.join("\n")
         })
