@@ -1,4 +1,8 @@
 // Инициализация Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+// Твой конфигурационный объект Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyDGvOMm510KgJMpbCyxQqEq3aajE-Wafgw",
   authDomain: "olimpiada-informatic.firebaseapp.com",
@@ -7,8 +11,10 @@ const firebaseConfig = {
   messagingSenderId: "946061821959",
   appId: "1:946061821959:web:0539adc8a359bb7c7802a2"
 };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+
+// Инициализация Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 // Вход пользователя
 document.getElementById('loginForm')?.addEventListener('submit', (event) => {
@@ -16,7 +22,7 @@ document.getElementById('loginForm')?.addEventListener('submit', (event) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             alert('Успешный вход!');
             window.location.href = 'dashboard.html';
@@ -32,7 +38,7 @@ document.getElementById('registerForm')?.addEventListener('submit', (event) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             alert('Регистрация успешна!');
             window.location.href = 'dashboard.html';
@@ -44,7 +50,7 @@ document.getElementById('registerForm')?.addEventListener('submit', (event) => {
 
 // Logout пользователя
 function logout() {
-    firebase.auth().signOut().then(() => {
+    signOut(auth).then(() => {
         alert('Вы вышли из системы.');
         window.location.href = 'index.html';
     }).catch((error) => {
