@@ -14,7 +14,7 @@ function getSubject() {
 // Функция для сохранения данных в Firestore
 async function saveAnswersToFirestore(email, answers) {
     try {
-        const docRef = doc(collection(db, 'quizzes')); // Создает новый документ с уникальным идентификатором
+        const docRef = doc(collection(db, 'olimpiad_math')); // Создает новый документ с уникальным идентификатором
         await setDoc(docRef, {
             email: email,
             subject: 'math', 
