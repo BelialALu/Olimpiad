@@ -7,7 +7,7 @@ const correctAnswers = {
     "4": "15",
     "5": "23",
     "6": "16",
-    "7": ["1,5", "1.5"],
+    "7": ["1,5", "1.5"], // Поддержка для двух форматов
     "8": "23",
 };
 
@@ -23,12 +23,16 @@ function displayResults() {
 
     for (const [question, answer] of Object.entries(answers)) {
         const correctAnswer = correctAnswers[question];
-        if (answer === correctAnswer) {
+        // Проверка на соответствие правильному ответу
+        const isCorrect = Array.isArray(correctAnswer) ? correctAnswer.includes(answer) : correctAnswer === answer;
+        
+        if (isCorrect) {
             correctCount++;
         }
-        resultsHtml += `<p>Вопрос ${question}: Ваш ответ: "${answer}", Правильный ответ: "${correctAnswer}"</p>`;
+
+        resultsHtml += `<p>Вопрос ${question}: Ваш ответ: "${answer}", Правильный ответ: "${Array.isArray(correctAnswer) ? correctAnswer.join(' или ') : correctAnswer}"</p>`;
     }
 
-    resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 7 вопросов</h3>` + resultsHtml;
+    resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 8 вопросов</h3>` + resultsHtml;
     document.getElementById('results').innerHTML = resultsHtml;
 }
