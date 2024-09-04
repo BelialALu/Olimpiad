@@ -32,48 +32,5 @@
             <button id="resetPasswordBtn">Отправить инструкции</button>
         </div>
     </div>
-
-    <script type="module">
-        import { getAuth, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
-
-        // Инициализация Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyDGvOMm510KgJMpbCyxQqEq3aajE-Wafgw",
-            authDomain: "olimpiada-informatic.firebaseapp.com",
-            projectId: "olimpiada-informatic",
-            storageBucket: "olimpiada-informatic.appspot.com",
-            messagingSenderId: "946061821959",
-            appId: "1:946061821959:web:0539adc8a359bb7c7802a2",
-            measurementId: "G-980CGTSJ4Y"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        document.getElementById('forgotPasswordBtn').addEventListener('click', () => {
-            document.getElementById('forgotPasswordModal').style.display = 'block';
-        });
-
-        document.getElementById('closeModalBtn').addEventListener('click', () => {
-            document.getElementById('forgotPasswordModal').style.display = 'none';
-        });
-
-        document.getElementById('resetPasswordBtn').addEventListener('click', () => {
-            const email = document.getElementById('resetEmail').value;
-            if (email) {
-                sendPasswordResetEmail(auth, email)
-                    .then(() => {
-                        alert('Инструкции по сбросу пароля отправлены на указанный email.');
-                        document.getElementById('forgotPasswordModal').style.display = 'none';
-                    })
-                    .catch((error) => {
-                        alert('Ошибка: ' + error.message);
-                    });
-            } else {
-                alert('Пожалуйста, введите email.');
-            }
-        });
-    </script>
 </body>
 </html>
