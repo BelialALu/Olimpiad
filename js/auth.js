@@ -43,7 +43,7 @@ document.getElementById('registerForm')?.addEventListener('submit', (event) => {
             window.location.href = 'dashboard.html';
         })
         .catch((error) => {
-            alert('Ошибка регистрации: ' + error.message);
+            alert('Ошибка регистрации: Данный пользователь уже зарегестрирован' + error.message);
         });
 });
 
