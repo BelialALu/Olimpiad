@@ -31,5 +31,3 @@ function displayResults() {
     resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 7 вопросов</h3>` + resultsHtml;
     document.getElementById('results').innerHTML = resultsHtml;
 }
-
-// Удалены функции openEmailModal, closeEmailModal, sendEmail, getIncorrectAnswers
