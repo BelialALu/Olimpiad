@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Олимпиада по Математике</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="js/quiz.js" defer></script>
 </head>
 <body>
@@ -12,32 +14,72 @@
         <h1>Олимпиада по Математике</h1>
         <form id="quizForm">
             <div class="question">
-                <label for="question-1">Вопрос 1: Какое минимальное количество бит потребуется для кодирования любого цвета из палитры, насчитывающей 700 различных цветов?</label>
-                <input type="text" id="question-1" name="question1" required>
+                <label for="question-1">Вопрос 1: Футбольная команда "Квадратный круг"состоит из 11 игроков, включая вратаря. Какое утверждение является верным?</label>
+                <div>
+                    <input type="radio" id="question1-option1" name="question1" value="option1" required>
+                    <label for="question1-option1">1) Хотя бы два игрока команды родились в один день недели.</label>
+                </div>
+                <div>
+                    <input type="radio" id="question1-option2" name="question1" value="option2" required>
+                    <label for="question1-option2">2) Хотя бы два игрока команды родились в понедельник.</label>
+                </div>
+                <div>
+                    <input type="radio" id="question1-option3" name="question1" value="option3" required>
+                    <label for="question1-option3">3) Вратарь и один из полевых игроков родились в один день недели.</label>
+                </div>
             </div>
             <div class="question">
-                <label for="question-2">Вопрос 2: В тетради записано число 213. Сначала его необходимо умножить на два, а затем, если получится число больше 1000, отбросить последнюю цифру. Какое число будет записано в тетради после 5 таких операций?</label>
-                <input type="text" id="question-2" name="question2" required>
+                <label for="question-2">Вопрос 2: Свежесобранные ягоды черники содержат 99% воды. Через некоторое время эти же ягоды стали содержать 98% воды. Как изменилась масса ягод?</label>
+                <div>
+                    <input type="radio" id="question2-option1" name="question2" value="option1" required>
+                    <label for="question2-option1">1) Уменьшилась на 1%.</label>
+                </div>
+                <div>
+                    <input type="radio" id="question2-option2" name="question2" value="option2" required>
+                    <label for="question2-option2">2) Уменьшилась в 98/99 раз.</label>
+                </div>
+                <div>
+                    <input type="radio" id="question2-option3" name="question2" value="option3" required>
+                    <label for="question2-option3">3) Уменьшилась в 2 раза.</label>
+                </div>
             </div>
             <div class="question">
-                <label for="question-3">Вопрос 3: Как называется стандарт передачи данных в локальных сетях?</label>
-                <input type="text" id="question-3" name="question3" required>
+                <label for="question-3">Вопрос 3: В треугольнике ABC известны длины двух сторон AB = π, BC = cos 30◦, а длина стороны AC является целым числом. Найдите AC. Выберите верное утверждение.</label>
+                <div>
+                    <input type="radio" id="question3-option1" name="question3" value="option1" required>
+                    <label for="question3-option1">1) Единственное возможное значение длины стороны AC равно 3.</label>
+                </div>
+                <div>
+                    <input type="radio" id="question3-option2" name="question3" value="option2" required>
+                    <label for="question3-option2">2) Единственное возможное значение длины стороны AC равно 4.</label>
+                </div>
+                <div>
+                    <input type="radio" id="question3-option3" name="question3" value="option3" required>
+                    <label for="question3-option3">3) Длина стороны AC может быть равна 3 или 4.</label>
+                </div>
             </div>
             <div class="question">
-                <label for="question-4">Вопрос 4: Для кодирования цвета фона web-страницы используется атрибут bgcolor=”#XXXXXX”, где в кавычках задаются шестнадцатеричные значения интенсивности цветовых компонент в 24-битной RGB-модели. Какой цвет фона будет у страницы, заданной тегом <bоdy dgcolor=”#FFООFF”>?</label>
+                <label for="question-4">Вопрос 4: Длина дорожки легкоатлетического стадиона равна 400 м. Из одной точки одновременно в разных направлениях с постоянной скоростью выбежали два бегуна. Один бегун имеет скорость 5 км/ч, второй – 7 км/ч. Сколько раз бегуны встретятся за время получасовой тренировки? (Старт за встречу не считаем.)</label>
                 <input type="text" id="question-4" name="question4" required>
             </div>
             <div class="question">
-                <label for="question-5">Вопрос 5: Для передачи по каналу связи сообщения, состоящего только из символов К, Л, М, Н, используется неравномерный (по длине) код: К – 110, Л – 100, М – 01, Н – 10. Через канал связи передается сообщение: НЛМММНК. Закодируйте сообщение данным кодом. Полученную двоичную последовательность переведите в шестнадцатеричный вид.</label>
+                <label for="question-5">Вопрос 5: Решите уравнение:</label>
+                <!-- Блок для математического выражения -->
+                <div>$$\frac{|x-1|}{x-1} + \frac{|x|}{x} + \frac{|x+1|}{x+1} + (x-1)^2 + x^2 + (x+1)^2 = a$$</div>
+                <p>При всех значениях параметра \(a\). В ответ запишите сумму целых значений \(a\), при которых уравнение имеет ровно одно решение.</p>
                 <input type="text" id="question-5" name="question5" required>
             </div>
             <div class="question">
-                <label for="question-6">Вопрос 6: О чем идет речь? Это конечный набор правил, который определяет последовательность операций для решения конкретного множества задач и обладает пятью важными чертами: конечность, определённость, ввод, вывод, эффективность.</label>
+                <label for="question-6">Вопрос 6: Решите в целых числах уравнение $$6x^2-3xy+7y-23x+26=0$$. В ответ запишите сумму произведений всех найденных значений $$(x;y)$$. (Например, найденные решения – это две пары \( (1; 1) \) и \( (2; 3) \, тогда в ответ следует записать число 7, потому что \(1 \cdot 1 + 2 \cdot 3 = 7\).)</label>
                 <input type="text" id="question-6" name="question6" required>
             </div>
             <div class="question">
-                <label for="question-7">Вопрос 7: Чему равна сумма чисел 111100<sub>2</sub> и 101<sub>8</sub> ?</label>
+                <label for="question-7">Вопрос 7: В равнобедренном треугольнике ABC AB = BC = 4, AC = 2, BH− высота. Вписанная в треугольник ABC окружность второй раз пересекает высоту BH в точке K. Найдите BK : KH.</label>
                 <input type="text" id="question-7" name="question7" required>
+            </div>
+            <div class="question">
+                <label for="question-8">Вопрос 8: Точки L, E, F, T – последовательные вершины параллелограмма. На отрезке LT отмечена точка N такая, что LN : NT = 3 : 2. На отрезке LF отмечена точка O такая, что LO : OF = 2 : 3. Прямая NO пересекает отрезок EF в точке G. Найдите площадь четырехугольника LEGO, если площадь параллелограмма LEF T равна 100.</label>
+                <input type="text" id="question-8" name="question8" required>
             </div>
             <button type="submit">Завершить и проверить результаты</button>
         </form>
