@@ -9,10 +9,14 @@ function finishQuiz(event) {
 
     const subject = getSubject(); // Получаем предмет
     const userAnswers = {}; // Собираем ответы пользователя из формы
-    for (let i = 1; i <= 7; i++) {
-        const answer = document.getElementById(`question-${i}`).value;
-        userAnswers[i] = answer;
+
+    // Перебираем все вопросы
+    for (let i = 1; i <= 8; i++) {
+        const questionElement = document.querySelector(`[name="question${i}"]:checked`); // Ищем выбранный ответ для вопроса
+        const answer = questionElement ? questionElement.value : document.getElementById(`question-${i}`).value; // Получаем ответ
+        userAnswers[i] = answer; // Сохраняем ответ в объект
     }
+
     localStorage.setItem(`quizAnswers_${subject}`, JSON.stringify(userAnswers)); // Сохраняем ответы
     window.location.href = 'results.html'; // Переходим на страницу результатов
 }
