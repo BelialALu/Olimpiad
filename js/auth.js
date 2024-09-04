@@ -1,6 +1,5 @@
-// auth.js
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
 
 // Инициализация Firebase
 const firebaseConfig = {
@@ -74,3 +73,13 @@ document.getElementById('resetPasswordBtn')?.addEventListener('click', () => {
         alert('Пожалуйста, введите email.');
     }
 });
+
+// Logout пользователя
+window.logout = () => {
+    signOut(auth).then(() => {
+        alert('Вы вышли из системы.');
+        window.location.href = 'index.html';
+    }).catch((error) => {
+        alert('Ошибка при выходе: ' + error.message);
+    });
+}
