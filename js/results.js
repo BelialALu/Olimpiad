@@ -23,16 +23,31 @@ function displayResults() {
 
     for (const [question, answer] of Object.entries(answers)) {
         const correctAnswer = correctAnswers[question];
-        // Проверка на соответствие правильному ответу
         const isCorrect = Array.isArray(correctAnswer) ? correctAnswer.includes(answer) : correctAnswer === answer;
-        
+
+        // Найти текст выбранного ответа
+        const answerText = getAnswerText(question, answer);
+        // Найти текст правильного ответа
+        const correctAnswerText = Array.isArray(correctAnswer)
+            ? correctAnswer.map(ans => getAnswerText(question, ans)).join(' или ')
+            : getAnswerText(question, correctAnswer);
+
         if (isCorrect) {
             correctCount++;
         }
 
-        resultsHtml += `<p>Вопрос ${question}: Ваш ответ: "${answer}", Правильный ответ: "${Array.isArray(correctAnswer) ? correctAnswer.join(' или ') : correctAnswer}"</p>`;
+        resultsHtml += `<p>Вопрос ${question}: Ваш ответ: "${answerText}", Правильный ответ: "${correctAnswerText}"</p>`;
     }
 
     resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 8 вопросов</h3>` + resultsHtml;
     document.getElementById('results').innerHTML = resultsHtml;
+}
+
+// Функция для получения текста метки выбранного ответа
+function getAnswerText(questionNumber, optionValue) {
+    if (optionValue.startsWith('option')) {
+        const labelElement = document.querySelector(`label[for="question${questionNumber}-${optionValue}"]`);
+        return labelElement ? labelElement.textContent.trim() : optionValue;
+    }
+    return optionValue;
 }
