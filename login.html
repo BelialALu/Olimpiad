@@ -16,6 +16,46 @@
             <button type="submit">Войти</button>
         </form>
         <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+        <button id="forgotPasswordBtn">Забыли пароль?</button>
     </div>
+
+    <!-- Модальное окно для сброса пароля -->
+    <div id="forgotPasswordModal" style="display:none;">
+        <div class="modal-content">
+            <span id="closeModalBtn" class="close">&times;</span>
+            <h2>Восстановление пароля</h2>
+            <p>Введите ваш email для сброса пароля:</p>
+            <input type="email" id="resetEmail" placeholder="Email" required>
+            <button id="resetPasswordBtn">Отправить инструкции</button>
+        </div>
+    </div>
+    
+    <script>
+        // Обработка открытия и закрытия модального окна
+        document.getElementById('forgotPasswordBtn').addEventListener('click', () => {
+            document.getElementById('forgotPasswordModal').style.display = 'block';
+        });
+
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            document.getElementById('forgotPasswordModal').style.display = 'none';
+        });
+
+        // Обработка сброса пароля
+        document.getElementById('resetPasswordBtn').addEventListener('click', () => {
+            const email = document.getElementById('resetEmail').value;
+            if (email) {
+                firebase.auth().sendPasswordResetEmail(email)
+                    .then(() => {
+                        alert('Инструкции по сбросу пароля отправлены на указанный email.');
+                        document.getElementById('forgotPasswordModal').style.display = 'none';
+                    })
+                    .catch((error) => {
+                        alert('Ошибка: ' + error.message);
+                    });
+            } else {
+                alert('Пожалуйста, введите email.');
+            }
+        });
+    </script>
 </body>
 </html>
