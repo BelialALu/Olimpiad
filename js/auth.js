@@ -9,7 +9,8 @@ const firebaseConfig = {
   projectId: "olimpiada-informatic",
   storageBucket: "olimpiada-informatic.appspot.com",
   messagingSenderId: "946061821959",
-  appId: "1:946061821959:web:0539adc8a359bb7c7802a2"
+  appId: "1:946061821959:web:0539adc8a359bb7c7802a2",
+  measurementId: "G-980CGTSJ4Y"
 };
 
 // Инициализация Firebase
