@@ -48,15 +48,17 @@ document.getElementById('registerForm')?.addEventListener('submit', (event) => {
         });
 });
 
-// Сброс пароля
+// Открытие модального окна для сброса пароля
 document.getElementById('forgotPasswordBtn')?.addEventListener('click', () => {
     document.getElementById('forgotPasswordModal').style.display = 'block';
 });
 
+// Закрытие модального окна
 document.getElementById('closeModalBtn')?.addEventListener('click', () => {
     document.getElementById('forgotPasswordModal').style.display = 'none';
 });
 
+// Сброс пароля
 document.getElementById('resetPasswordBtn')?.addEventListener('click', () => {
     const email = document.getElementById('resetEmail').value;
     if (email) {
