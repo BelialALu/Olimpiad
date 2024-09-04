@@ -48,11 +48,12 @@ document.getElementById('registerForm')?.addEventListener('submit', (event) => {
 });
 
 // Logout пользователя
-function logout() {
-    auth.signOut().then(() => {
+export async function logout() {
+    try {
+        await signOut(auth);
         alert('Вы вышли из системы.');
         window.location.href = 'index.html';
-    }).catch((error) => {
+    } catch (error) {
         alert('Ошибка при выходе: ' + error.message);
-    });
+    }
 }
