@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', displayResults);
 
 const correctAnswers = {
-    "1": "10",
+    "1": "1) Хотя бы два игрока команды родились в один день недели.",
     "2": "680",
     "3": "Ethernet",
     "4": "фиолетовый",
