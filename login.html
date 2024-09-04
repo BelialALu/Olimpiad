@@ -5,31 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход</title>
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Подключение Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
-    <script src="js/auth.js" type="module" defer></script>
+    <script type="module" src="js/auth.js" defer></script>
 </head>
 <body>
     <div class="container">
         <h1>Вход</h1>
         <form id="loginForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Пароль" required>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div>
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" required>
+            </div>
             <button type="submit">Войти</button>
         </form>
-        <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
         <button id="forgotPasswordBtn">Забыли пароль?</button>
-    </div>
 
-    <!-- Модальное окно для сброса пароля -->
-    <div id="forgotPasswordModal" style="display:none;">
-        <div class="modal-content">
-            <span id="closeModalBtn" class="close">&times;</span>
-            <h2>Восстановление пароля</h2>
-            <p>Введите ваш email для сброса пароля:</p>
-            <input type="email" id="resetEmail" placeholder="Email" required>
-            <button id="resetPasswordBtn">Отправить инструкции</button>
+        <!-- Модальное окно для сброса пароля -->
+        <div id="forgotPasswordModal" style="display: none;">
+            <div>
+                <span id="closeModalBtn">&times;</span>
+                <h2>Сброс пароля</h2>
+                <form id="resetPasswordForm">
+                    <div>
+                        <label for="resetEmail">Введите ваш email:</label>
+                        <input type="email" id="resetEmail" required>
+                    </div>
+                    <button type="button" id="resetPasswordBtn">Сбросить пароль</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>
