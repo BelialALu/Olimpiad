@@ -48,7 +48,7 @@ document.getElementById('registerForm')?.addEventListener('submit', async (event
 });
 
 // Logout пользователя
-export async function logout() {
+window.logout = async function() {
     try {
         await signOut(auth);
         alert('Вы вышли из системы.');
