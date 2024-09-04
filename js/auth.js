@@ -1,5 +1,9 @@
-// Инициализация Firebase
-var firebaseConfig = {
+// auth.js
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+
+// Ваши конфигурационные данные Firebase
+const firebaseConfig = {
   apiKey: "AIzaSyDGvOMm510KgJMpbCyxQqEq3aajE-Wafgw",
   authDomain: "olimpiada-informatic.firebaseapp.com",
   projectId: "olimpiada-informatic",
@@ -10,64 +14,35 @@ var firebaseConfig = {
 };
 
 // Инициализация Firebase
-firebase.initializeApp(firebaseConfig);
-
-// Получаем ссылку на авторизацию
-var auth = firebase.auth();
-
-// Вход пользователя
-document.getElementById('loginForm')?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-
-    if (!email || !password) {
-        alert('Пожалуйста, введите email и пароль.');
-        return;
-    }
-
-    auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            console.log('User signed in:', userCredential);
-            alert('Успешный вход!');
-            window.location.href = 'dashboard.html';
-        })
-        .catch((error) => {
-            console.error('Error signing in:', error);
-            alert('Ошибка входа: ' + error.message);
-        });
-});
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 // Регистрация пользователя
-document.getElementById('registerForm')?.addEventListener('submit', (event) => {
-    event.preventDefault();
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
+document.getElementById('registerForm')?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
-    if (!email || !password) {
-        alert('Пожалуйста, введите email и пароль.');
-        return;
-    }
-
-    auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            console.log('User registered:', userCredential);
-            alert('Регистрация успешна!');
-            window.location.href = 'dashboard.html';
-        })
-        .catch((error) => {
-            console.error('Error registering user:', error);
-            alert('Ошибка регистрации: ' + error.message);
-        });
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    alert('Регистрация успешна!');
+    window.location.href = 'dashboard.html';
+  } catch (error) {
+    alert('Ошибка регистрации: ' + error.message);
+  }
 });
 
-// Logout пользователя
-function logout() {
-    auth.signOut().then(() => {
-        alert('Вы вышли из системы.');
-        window.location.href = 'index.html';
-    }).catch((error) => {
-        console.error('Error signing out:', error);
-        alert('Ошибка при выходе: ' + error.message);
-    });
-}
+// Вход пользователя
+document.getElementById('loginForm')?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    alert('Успешный вход!');
+    window.location.href = 'dashboard.html';
+  } catch (error) {
+    alert('Ошибка входа: ' + error.message);
+  }
+});
