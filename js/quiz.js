@@ -1,34 +1,10 @@
-import { getFirestore, collection, doc, setDoc, Timestamp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
-import { app } from './auth.js'; // Импортируйте уже инициализированный экземпляр Firebase
-
-// Инициализация Firestore с использованием существующего экземпляра Firebase
-const db = getFirestore(app);
-const auth = getAuth(app);
-
 // Функция для получения предмета из URL
 function getSubject() {
     return 'informatics'; // Устанавливаем предмет как 'informatics' для упрощения
 }
 
-// Функция для сохранения данных в Firestore
-async function saveAnswersToFirestore(email, answers) {
-    try {
-        const docRef = doc(collection(db, 'olimpiad_math')); // Используем имя коллекции 'olimpiad_math'
-        await setDoc(docRef, {
-            email: email,
-            subject: 'informatics', // Или другой предмет
-            answers: answers,
-            timestamp: Timestamp.now() // Используем текущее время в формате Timestamp
-        });
-        console.log('Ответы успешно сохранены в Firestore!');
-    } catch (e) {
-        console.error('Ошибка при сохранении ответов в Firestore: ', e);
-    }
-}
-
 // Сохранение ответов и переход к результатам
-async function finishQuiz(event) {
+function finishQuiz(event) {
     event.preventDefault(); // Предотвращаем отправку формы
 
     const subject = getSubject(); // Получаем предмет
@@ -41,18 +17,8 @@ async function finishQuiz(event) {
         userAnswers[i] = answer; // Сохраняем ответ в объект
     }
 
-    // Получаем текущего пользователя
-    const user = auth.currentUser;
-    const userEmail = user ? user.email : 'unknown'; // Получаем email текущего пользователя
-
-    // Сохраняем ответы в localStorage
-    localStorage.setItem(`quizAnswers_${subject}`, JSON.stringify(userAnswers)); 
-
-    // Сохраняем ответы в Firestore
-    await saveAnswersToFirestore(userEmail, userAnswers);
-
-    // Переходим на страницу результатов
-    window.location.href = 'results.html';
+    localStorage.setItem(`quizAnswers_${subject}`, JSON.stringify(userAnswers)); // Сохраняем ответы
+    window.location.href = 'results.html'; // Переходим на страницу результатов
 }
 
 // Инициализация страницы
