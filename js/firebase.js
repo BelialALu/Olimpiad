@@ -1,9 +1,8 @@
 // firebase.js
-// Импорт функции из Firebase SDK
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
 
-// Ключи конфигурации Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDGvOMm510KgJMpbCyxQqEq3aajE-Wafgw",
     authDomain: "olimpiada-informatic.firebaseapp.com",
@@ -14,10 +13,8 @@ const firebaseConfig = {
     measurementId: "G-980CGTSJ4Y"
 };
 
-// Инициализация Firebase
 const app = initializeApp(firebaseConfig);
-
-// Инициализация Firestore
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-export { app, db };
+export { db, auth, collection, addDoc };
