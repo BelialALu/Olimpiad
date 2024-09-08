@@ -71,7 +71,7 @@ body {
     color: #000;
     text-decoration: none;
     padding: 10px 20px; /* Отступы внутри кнопок */
-    border: 2px solid rgba(154, 131, 93, 0.5); /* Полупрозрачная рамка цвета кнопок */
+    border: 2px solid rgba(210, 180, 140, 0.5); /* Полупрозрачная рамка цвета кнопок */
     border-radius: 4px; /* Скругленные углы рамки */
     background-color: transparent; /* Прозрачный фон кнопок */
     cursor: pointer;
