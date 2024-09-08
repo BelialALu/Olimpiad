@@ -1,6 +1,6 @@
 import { getFirestore, collection, doc, setDoc, Timestamp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
-import { app } from './auth.js'; // Импортируем уже инициализированный экземпляр Firebase
+import { app } from 'js./auth.js'; // Импортируем уже инициализированный экземпляр Firebase
 
 // Инициализация Firestore с использованием существующего экземпляра Firebase
 const db = getFirestore(app);
