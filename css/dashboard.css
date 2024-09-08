@@ -1,5 +1,12 @@
 /* dashboard.css */
 
+/* Стили для фона страницы dashboard */
+body {
+    background-color: #f5cc9b; /* Установка фонового цвета для страницы dashboard */
+    margin: 0; /* Убираем отступы у body */
+    padding: 0; /* Убираем отступы у body */
+}
+
 /* Стили для основной секции страницы dashboard */
 .main-content {
     display: flex;
@@ -13,6 +20,10 @@
     flex-direction: column; /* Вертикальное размещение заголовков и текста */
     margin-bottom: 20px; /* Отступы между секциями */
     width: 100%;
+    background-color: #fff; /* Белый фон для секций с контентом */
+    padding: 20px; /* Отступы внутри секций */
+    border-radius: 10px; /* Скругленные углы секций */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
 }
 
 .content-section h1, .content-section h2 {
@@ -58,21 +69,4 @@
     margin-bottom: 10px; /* Отступы между ссылками */
     color: #000;
     text-decoration: none;
-}
-/* Стили для страницы dashboard */
-#dashboard-container {
-    background-color: #f5cc9b; /* Установка фонового цвета только для страницы dashboard */
-}
-
-/* Стили для блока с контентом на странице dashboard */
-#dashboard-content {
-    background-color: #fff; /* Белый фон для контента, чтобы выделять его на фоне страницы */
-    padding: 20px;
-    border-radius: 10px; /* Скругленные углы */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
-}
-
-
-.navbar button {
-    margin-top: 10px; /* Отступ сверху для кнопки выхода */
 }
