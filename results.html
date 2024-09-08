@@ -14,13 +14,19 @@
     <div class="container">
         <h1>Результаты Олимпиады по Математике</h1>
         <div id="results"></div>
+        
+        <!-- Добавляем кнопку для возвращения на главный экран -->
+        <button id="goToDashboard">Вернуться на главный экран</button>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-        MathJax.typeset(); // Запускаем перерисовку MathJax
-    });
-</script>
-
+            MathJax.typeset(); // Запускаем перерисовку MathJax
+            
+            // Добавляем обработчик событий для кнопки
+            document.getElementById('goToDashboard').addEventListener('click', () => {
+                window.location.href = 'dashboard.html';
+            });
+        });
     </script>
 </body>
 </html>
