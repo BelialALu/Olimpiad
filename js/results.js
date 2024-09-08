@@ -8,7 +8,7 @@ const correctAnswers = {
     "5": "23",
     "6": "16",
     "7": ["1,5", "1.5"], // Поддержка для двух форматов
-    "8": "23",
+    "8": "23"
 };
 
 const questionsText = {
@@ -21,7 +21,6 @@ const questionsText = {
     "7": "Вопрос 7: В равнобедренном треугольнике ABC AB = BC = 4, AC = 2, BH− высота. Вписанная в треугольник ABC окружность второй раз пересекает высоту BH в точке K. Найдите BK : KH.",
     "8": "Вопрос 8: Точки L, E, F, T – последовательные вершины параллелограмма. На отрезке LT отмечена точка N такая, что LN : NT = 3 : 2. На отрезке LF отмечена точка O такая, что LO : OF = 2 : 3. Прямая NO пересекает отрезок EF в точке G. Найдите площадь четырехугольника LEGO, если площадь параллелограмма LEF T равна 100."
 };
-
 
 const answerTexts = {
     "1": {
@@ -90,4 +89,6 @@ function displayResults() {
         resultsHtml += `<p>${questionText}<br>Ваш ответ: "${answerText}", Правильный ответ: "${correctAnswerText}"</p>`;
     }
 
-    resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 
+    resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 8 вопросов</h3>` + resultsHtml;
+    document.getElementById('results').innerHTML = resultsHtml;
+}
