@@ -16,17 +16,18 @@ body {
     padding: 20px;
 }
 
-/* Стили для блока входа */
-.login-box {
+/* Стили для блока входа и регистрации */
+.form-box {
     background-color: #fff; /* Цвет фона блока */
     padding: 20px;
     border-radius: 10px; /* Скругленные углы */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
     max-width: 400px; /* Максимальная ширина блока */
     width: 100%; /* Ширина блока */
+    box-sizing: border-box; /* Учитываем паддинг в ширину блока */
 }
 
-/* Стили для формы */
+/* Стили для форм */
 .form-group {
     margin-bottom: 15px;
 }
@@ -39,7 +40,7 @@ label {
 input {
     width: 100%; /* Ширина инпутов */
     padding: 10px;
-    max-width: 300px;
+    max-width: 300px; /* Максимальная ширина полей ввода */
     border: 1px solid #ccc;
     border-radius: 4px; /* Скругленные углы инпутов */
 }
@@ -101,4 +102,34 @@ button:hover {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Стили для страницы входа и регистрации */
+.login-box, .register-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box .form-actions, .register-box .form-actions {
+    display: flex;
+    justify-content: space-between; /* Распределение кнопок */
+    align-items: center; /* Вертикальное выравнивание */
+    width: 100%;
+}
+
+.login-box button, .register-box button {
+    margin: 5px;
+}
+
+/* Стили для страницы регистрации */
+.register-box {
+    background-color: #fff; /* Цвет фона блока */
+    padding: 20px;
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+    max-width: 400px; /* Максимальная ширина блока */
+    width: 100%; /* Ширина блока */
+    box-sizing: border-box; /* Учитываем паддинг в ширину блока */
 }
