@@ -10,8 +10,9 @@ body {
 /* Стили для контейнера */
 .container {
     display: flex;
-    flex-direction: column; /* Изменено для поддержания вертикального расположения */
+    justify-content: center;
     align-items: center;
+    height: 100vh; /* Высота экрана */
     padding: 20px;
 }
 
@@ -132,63 +133,4 @@ button:hover {
     max-width: 400px; /* Максимальная ширина блока */
     width: 100%; /* Ширина блока */
     box-sizing: border-box; /* Учитываем паддинг в ширину блока */
-}
-
-/* Стили для полей ввода на странице регистрации */
-.wide-input {
-    width: 100%; /* Поле ввода займет 100% ширины родительского блока */
-    max-width: 350px; /* Максимальная ширина поля ввода */
-}
-
-/* Стили для навигационной панели на странице dashboard */
-.navbar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column; /* Размещение элементов в колонку */
-    align-items: flex-end; /* Выравнивание элементов по правому краю */
-    background-color: #f5cc9b; /* Фоновый цвет для панели */
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для панели */
-}
-
-.navbar a {
-    margin: 5px 0; /* Отступы между ссылками */
-    text-decoration: none;
-    color: #9a835d; /* Цвет текста ссылок */
-}
-
-.navbar button {
-    margin-top: 10px; /* Отступ сверху для кнопки */
-    background-color: #9a835d; /* Цвет кнопки */
-    color: white;
-    border: none;
-    border-radius: 4px; /* Скругленные углы кнопки */
-    cursor: pointer;
-    padding: 10px 15px;
-}
-
-.navbar button:hover {
-    background-color: #846b4f; /* Цвет кнопки при наведении */
-}
-
-/* Стили для кнопки начала олимпиады на странице dashboard */
-.start-button-container {
-    margin-top: 30px; /* Отступ сверху для кнопки */
-    text-align: center; /* Выравнивание по центру */
-}
-
-.start-button-container button {
-    padding: 10px 20px;
-    background-color: #9a835d; /* Цвет кнопки */
-    color: white;
-    border: none;
-    border-radius: 4px; /* Скругленные углы кнопки */
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.start-button-container button:hover {
-    background-color: #846b4f; /* Цвет кнопки при наведении */
 }
