@@ -16,7 +16,7 @@ body {
     padding: 20px;
 }
 
-/* Стили для блока входа и регистрации */
+/* Стили для блока форм */
 .form-box {
     background-color: #fff; /* Цвет фона блока */
     padding: 20px;
@@ -40,7 +40,7 @@ label {
 input {
     width: 100%; /* Ширина инпутов */
     padding: 10px;
-    max-width: 350px; /* Максимальная ширина полей ввода */
+    max-width: 300px; /* Максимальная ширина полей ввода */
     border: 1px solid #ccc;
     border-radius: 4px; /* Скругленные углы инпутов */
 }
@@ -65,6 +65,7 @@ button:hover {
     display: flex;
     justify-content: space-between; /* Распределение кнопок */
     align-items: center; /* Вертикальное выравнивание */
+    width: 100%;
 }
 
 /* Стили для модального окна */
@@ -104,7 +105,7 @@ button:hover {
     cursor: pointer;
 }
 
-/* Стили для страницы входа и регистрации */
+/* Специфические стили для страниц входа и регистрации */
 .login-box, .register-box {
     display: flex;
     flex-direction: column;
