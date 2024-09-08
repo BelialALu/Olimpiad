@@ -40,7 +40,7 @@ label {
 input {
     width: 100%; /* Ширина инпутов */
     padding: 10px;
-    max-width: 300px; /* Максимальная ширина полей ввода */
+    max-width: 350px; /* Максимальная ширина полей ввода */
     border: 1px solid #ccc;
     border-radius: 4px; /* Скругленные углы инпутов */
 }
