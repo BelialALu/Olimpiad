@@ -7,7 +7,7 @@ const correctAnswers = {
     "4": "15",
     "5": "23",
     "6": "16",
-    "7": ["1,5", "1.5"], // Поддержка для двух форматов
+    "7": ["1,5", "1.5"],
     "8": "23"
 };
 
@@ -57,7 +57,7 @@ const answerTexts = {
 };
 
 function displayResults() {
-    const subject = 'math'; // Используйте правильный ключ для доступа к данным
+    const subject = 'math';
     const answers = JSON.parse(localStorage.getItem(`quizAnswers_${subject}`));
 
     if (!answers) {
@@ -86,7 +86,13 @@ function displayResults() {
             correctCount++;
         }
 
-        resultsHtml += `<p>${questionText}<br>Ваш ответ: "${answerText}", Правильный ответ: "${correctAnswerText}"</p>`;
+        // Рендеринг результата каждого вопроса в отдельном блоке
+        resultsHtml += `
+            <div class="result-item">
+                <p><strong>${questionText}</strong></p>
+                <p>Ваш ответ: "${answerText}"</p>
+                <p>Правильный ответ: "${correctAnswerText}"</p>
+            </div>`;
     }
 
     resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 8 вопросов</h3>` + resultsHtml;
