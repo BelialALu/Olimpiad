@@ -1,51 +1,58 @@
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getFirestore, collection, doc, setDoc, Timestamp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+import { app } from './auth.js'; // Импортируйте уже инициализированный экземпляр Firebase
 
-// Инициализация Firestore и Auth
-const firestore = getFirestore();
-const auth = getAuth();
-
-async function saveAnswersToFirestore(subject, userAnswers) {
-    try {
-        const user = auth.currentUser;
-        if (user) {
-            const email = user.email;
-            await addDoc(collection(firestore, 'quizzes'), {
-                email,
-                subject,
-                answers: userAnswers,
-                timestamp: new Date()
-            });
-            console.log('Данные успешно сохранены в Firestore');
-        } else {
-            console.error('Пользователь не авторизован');
-        }
-    } catch (error) {
-        console.error('Ошибка сохранения данных в Firestore:', error);
-    }
-}
+// Инициализация Firestore с использованием существующего экземпляра Firebase
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 // Функция для получения предмета из URL
 function getSubject() {
     return 'informatics'; // Устанавливаем предмет как 'informatics' для упрощения
 }
 
+// Функция для сохранения данных в Firestore
+async function saveAnswersToFirestore(email, answers) {
+    try {
+        const docRef = doc(collection(db, 'olimpiad_math')); // Используем имя коллекции 'olimpiad_math'
+        await setDoc(docRef, {
+            email: email,
+            subject: 'informatics', // Или другой предмет
+            answers: answers,
+            timestamp: Timestamp.now() // Используем текущее время в формате Timestamp
+        });
+        console.log('Ответы успешно сохранены в Firestore!');
+    } catch (e) {
+        console.error('Ошибка при сохранении ответов в Firestore: ', e);
+    }
+}
+
 // Сохранение ответов и переход к результатам
-function finishQuiz(event) {
+async function finishQuiz(event) {
     event.preventDefault(); // Предотвращаем отправку формы
 
     const subject = getSubject(); // Получаем предмет
     const userAnswers = {}; // Собираем ответы пользователя из формы
-    for (let i = 1; i <= 7; i++) {
-        const answer = document.getElementById(`question-${i}`).value;
-        userAnswers[i] = answer;
+
+    // Перебираем все вопросы
+    for (let i = 1; i <= 8; i++) {
+        const questionElement = document.querySelector(`[name="question${i}"]:checked`); // Ищем выбранный ответ для вопроса
+        const answer = questionElement ? questionElement.value : document.getElementById(`question-${i}`).value; // Получаем ответ
+        userAnswers[i] = answer; // Сохраняем ответ в объект
     }
-    localStorage.setItem(`quizAnswers_${subject}`, JSON.stringify(userAnswers)); // Сохраняем ответы в localStorage
+
+    // Получаем текущего пользователя
+    const user = auth.currentUser;
+    const userEmail = user ? user.email : 'unknown'; // Получаем email текущего пользователя
+
+    // Сохраняем ответы в localStorage
+    localStorage.setItem(`quizAnswers_${subject}`, JSON.stringify(userAnswers)); 
 
     // Сохраняем ответы в Firestore
-    saveAnswersToFirestore(subject, userAnswers);
+    await saveAnswersToFirestore(userEmail, userAnswers);
 
-    window.location.href = 'results.html'; // Переходим на страницу результатов
+    // Переходим на страницу результатов
+    window.location.href = 'results.html';
 }
 
 // Инициализация страницы
