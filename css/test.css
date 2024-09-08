@@ -24,13 +24,13 @@ h1 {
 
 /* Стили для формы */
 form {
-    background-color: #fff; /* Цвет фона формы */
     padding: 20px;
     border-radius: 10px; /* Скругленные углы формы */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
     max-width: 600px; /* Максимальная ширина формы */
     width: 100%; /* Ширина формы */
     box-sizing: border-box; /* Учитываем паддинг в ширину формы */
+    background-color: transparent; /* Прозрачный фон для формы */
 }
 
 /* Стили для вопросов */
@@ -42,6 +42,11 @@ form {
     font-weight: bold; /* Полужирный шрифт для заголовка вопроса */
     display: block;
     margin-bottom: 10px; /* Отступ снизу */
+}
+
+.question p {
+    margin-top: 0; /* Убираем отступ сверху для вопроса */
+    margin-bottom: 10px; /* Отступ снизу для вопроса */
 }
 
 .question input[type="text"] {
