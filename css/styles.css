@@ -10,7 +10,7 @@ body {
 /* Стили для контейнера */
 .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Вертикальное размещение содержимого */
     align-items: center;
     height: 100vh; /* Высота экрана */
     padding: 20px;
@@ -134,8 +134,73 @@ button:hover {
     width: 100%; /* Ширина блока */
     box-sizing: border-box; /* Учитываем паддинг в ширину блока */
 }
+
 /* Стили для полей ввода на странице регистрации */
 .wide-input {
     width: 100%; /* Поле ввода займет 100% ширины родительского блока */
     max-width: 350px; /* Максимальная ширина поля ввода */
+}
+
+/* Стили для основной секции страницы dashboard */
+.main-content {
+    display: flex;
+    flex-direction: column; /* Вертикальное размещение содержимого */
+    width: 100%;
+}
+
+/* Стили для блоков с заголовками и текстом */
+.content-section {
+    display: flex;
+    flex-direction: column; /* Вертикальное размещение заголовков и текста */
+    margin-bottom: 20px; /* Отступы между секциями */
+    width: 100%;
+}
+
+.content-section h1, .content-section h2 {
+    margin: 0 0 10px 0; /* Отступы сверху и снизу для заголовков */
+}
+
+.content-section p {
+    max-width: 800px; /* Максимальная ширина текста */
+    line-height: 1.6; /* Высота строки для лучшей читаемости */
+}
+
+/* Стили для кнопки начала олимпиады на странице dashboard */
+.start-button-container {
+    margin-top: 30px; /* Отступ сверху для кнопки */
+    text-align: center; /* Выравнивание по центру */
+}
+
+.start-button-container button {
+    padding: 10px 20px;
+    background-color: #9a835d; /* Цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 4px; /* Скругленные углы кнопки */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.start-button-container button:hover {
+    background-color: #846b4f; /* Цвет кнопки при наведении */
+}
+
+/* Стили для навигационного меню на странице dashboard */
+.navbar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column; /* Вертикальное размещение ссылок и кнопки */
+    align-items: flex-end; /* Выравнивание по правому краю */
+}
+
+.navbar a {
+    margin-bottom: 10px; /* Отступы между ссылками */
+    color: #000;
+    text-decoration: none;
+}
+
+.navbar button {
+    margin-top: 10px; /* Отступ сверху для кнопки выхода */
 }
