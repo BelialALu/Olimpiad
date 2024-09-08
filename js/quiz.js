@@ -1,10 +1,32 @@
+import { getFirestore, collection, doc, setDoc, Timestamp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+
+// Инициализация Firestore
+const db = getFirestore(); // Предполагается, что Firebase уже инициализирован в другом месте
+
 // Функция для получения предмета из URL
 function getSubject() {
     return 'informatics'; // Устанавливаем предмет как 'informatics' для упрощения
 }
 
+// Функция для сохранения данных в Firestore
+async function saveAnswersToFirestore(email, answers) {
+    try {
+        const docRef = doc(collection(db, 'quizzes')); // Создает новый документ с уникальным идентификатором
+        await setDoc(docRef, {
+            email: email,
+            subject: 'informatics', // или другой предмет
+            answers: answers,
+            timestamp: Timestamp.now() // Использует текущее время в формате Timestamp
+        });
+        console.log('Ответы успешно сохранены в Firestore!');
+    } catch (e) {
+        console.error('Ошибка при сохранении ответов в Firestore: ', e);
+    }
+}
+
 // Сохранение ответов и переход к результатам
-function finishQuiz(event) {
+async function finishQuiz(event) {
     event.preventDefault(); // Предотвращаем отправку формы
 
     const subject = getSubject(); // Получаем предмет
@@ -17,8 +39,19 @@ function finishQuiz(event) {
         userAnswers[i] = answer; // Сохраняем ответ в объект
     }
 
-    localStorage.setItem(`quizAnswers_${subject}`, JSON.stringify(userAnswers)); // Сохраняем ответы
-    window.location.href = 'results.html'; // Переходим на страницу результатов
+    // Получаем текущего пользователя
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const userEmail = user ? user.email : 'unknown'; // Получаем email текущего пользователя
+
+    // Сохраняем ответы в localStorage
+    localStorage.setItem(`quizAnswers_${subject}`, JSON.stringify(userAnswers)); 
+
+    // Сохраняем ответы в Firestore
+    await saveAnswersToFirestore(userEmail, userAnswers);
+
+    // Переходим на страницу результатов
+    window.location.href = 'results.html';
 }
 
 // Инициализация страницы
