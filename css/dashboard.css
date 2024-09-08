@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column; /* Вертикальное размещение содержимого */
     width: 100%;
+    padding: 20px; /* Отступы вокруг основного контента */
 }
 
 /* Стили для блоков с заголовками и текстом */
@@ -65,8 +66,17 @@ body {
     align-items: flex-end; /* Выравнивание по правому краю */
 }
 
-.navbar a {
-    margin-bottom: 10px; /* Отступы между ссылками */
+.navbar a, .navbar button {
+    margin-bottom: 10px; /* Отступы между ссылками и кнопкой */
     color: #000;
     text-decoration: none;
+    padding: 10px 20px; /* Отступы внутри кнопок */
+    border: 2px solid rgba(154, 131, 93, 0.5); /* Полупрозрачная рамка цвета кнопок */
+    border-radius: 4px; /* Скругленные углы рамки */
+    background-color: transparent; /* Прозрачный фон кнопок */
+    cursor: pointer;
+}
+
+.navbar a:hover, .navbar button:hover {
+    background-color: rgba(154, 131, 93, 0.1); /* Легкий фон при наведении */
 }
