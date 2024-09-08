@@ -45,20 +45,23 @@ form {
     margin-bottom: 10px; /* Отступ снизу для вопроса */
 }
 
-.question input[type="text"] {
-    width: 100%; /* Ширина инпутов */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px; /* Скругленные углы инпутов */
-    box-sizing: border-box; /* Учитываем паддинг в ширину инпутов */
+/* Стили для вариантов ответа с радиокнопками */
+.question div {
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали */
+    margin-bottom: 10px; /* Отступы между вариантами ответа */
 }
 
 .question input[type="radio"] {
     margin-right: 10px; /* Отступ справа от радиокнопок */
 }
 
-.question div {
-    margin-bottom: 10px; /* Отступы между вариантами ответа */
+.question input[type="text"] {
+    width: 100%; /* Ширина инпутов */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Скругленные углы инпутов */
+    box-sizing: border-box; /* Учитываем паддинг в ширину инпутов */
 }
 
 /* Стили для кнопки */
