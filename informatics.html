@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Олимпиада по Математике</title>
     <link rel="stylesheet" href="css/styles.css">
-    <!--<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/@babel/polyfill@7.12.1/dist/polyfill.min.js"></script> <!-- Используем другой полифил -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="js/quiz.js" defer></script>
 </head>
@@ -14,7 +14,7 @@
         <h1>Олимпиада по Математике</h1>
         <form id="quizForm">
             <div class="question">
-                <label for="question-1">Вопрос 1: Футбольная команда "Квадратный круг"состоит из 11 игроков, включая вратаря. Какое утверждение является верным?</label>
+                <label for="question-1">Вопрос 1: Футбольная команда "Квадратный круг" состоит из 11 игроков, включая вратаря. Какое утверждение является верным?</label>
                 <div>
                     <input type="radio" id="question1-option1" name="question1" value="option1" required>
                     <label for="question1-option1">1) Хотя бы два игрока команды родились в один день недели.</label>
@@ -78,11 +78,4 @@
                 <input type="text" id="question-7" name="question7" required>
             </div>
             <div class="question">
-                <label for="question-8">Вопрос 8: Точки L, E, F, T – последовательные вершины параллелограмма. На отрезке LT отмечена точка N такая, что LN : NT = 3 : 2. На отрезке LF отмечена точка O такая, что LO : OF = 2 : 3. Прямая NO пересекает отрезок EF в точке G. Найдите площадь четырехугольника LEGO, если площадь параллелограмма LEF T равна 100.</label>
-                <input type="text" id="question-8" name="question8" required>
-            </div>
-            <button type="submit">Завершить и проверить результаты</button>
-        </form>
-    </div>
-</body>
-</html>
+                <label for="question-8">Вопрос 8: Точки L, E, F, T – последовательные вершины параллелограмма. На отрезке LT отмечена точка N такая, что LN : NT = 3 : 2. На отрезке LF отмечена точка O такая, что LO : OF = 2 : 3. Прямая NO пересекает отрезок EF в точке G. Найдите
