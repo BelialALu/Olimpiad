@@ -58,7 +58,9 @@ const answerTexts = {
 };
 
 function displayResults() {
-    const answers = JSON.parse(localStorage.getItem('quizAnswers_informatics'));
+    const subject = 'math'; // Используйте правильный ключ для доступа к данным
+    const answers = JSON.parse(localStorage.getItem(`quizAnswers_${subject}`));
+
     if (!answers) {
         document.getElementById('results').innerHTML = '<p>Ответы не найдены. Пожалуйста, пройдите тест.</p>';
         return;
@@ -88,6 +90,4 @@ function displayResults() {
         resultsHtml += `<p>${questionText}<br>Ваш ответ: "${answerText}", Правильный ответ: "${correctAnswerText}"</p>`;
     }
 
-    resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 8 вопросов</h3>` + resultsHtml;
-    document.getElementById('results').innerHTML = resultsHtml;
-}
+    resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 
