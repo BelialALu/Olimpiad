@@ -5,12 +5,13 @@ import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase
 
 // Ключи конфигурации Firebase
 const firebaseConfig = {
-    apiKey: "ВАШ_API_KEY",
-    authDomain: "ВАШ_AUTH_DOMAIN",
-    projectId: "ВАШ_PROJECT_ID",
-    storageBucket: "ВАШ_STORAGE_BUCKET",
-    messagingSenderId: "ВАШ_MESSAGING_SENDER_ID",
-    appId: "ВАШ_APP_ID"
+    apiKey: "AIzaSyDGvOMm510KgJMpbCyxQqEq3aajE-Wafgw",
+    authDomain: "olimpiada-informatic.firebaseapp.com",
+    projectId: "olimpiada-informatic",
+    storageBucket: "olimpiada-informatic.appspot.com",
+    messagingSenderId: "946061821959",
+    appId: "1:946061821959:web:0539adc8a359bb7c7802a2",
+    measurementId: "G-980CGTSJ4Y"
 };
 
 // Инициализация Firebase
