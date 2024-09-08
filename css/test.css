@@ -9,11 +9,6 @@ body {
 
 /* Стили для контейнера теста */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Высота экрана */
     padding: 20px;
 }
 
@@ -31,6 +26,7 @@ form {
     width: 100%; /* Ширина формы */
     box-sizing: border-box; /* Учитываем паддинг в ширину формы */
     background-color: transparent; /* Прозрачный фон для формы */
+    margin: 0 auto; /* Центрирование формы по горизонтали */
 }
 
 /* Стили для вопросов */
