@@ -28,7 +28,7 @@ body {
 
 /* Стили для формы */
 .form-group {
-    margin-bottom: 13px;
+    margin-bottom: 15px;
 }
 
 label {
@@ -39,6 +39,7 @@ label {
 input {
     width: 100%; /* Ширина инпутов */
     padding: 10px;
+    max-width: 100px;
     border: 1px solid #ccc;
     border-radius: 4px; /* Скругленные углы инпутов */
 }
