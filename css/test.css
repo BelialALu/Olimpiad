@@ -36,10 +36,18 @@ form {
     margin-bottom: 20px; /* Отступы между вопросами */
 }
 
+/* Стили для блока результата каждого вопроса */
+.result-item {
+    background-color: #F5DEB3; /* Цвет фона для каждого результата */
+    padding: 20px;
+    border-radius: 10px; /* Скругленные углы блока */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+    margin-bottom: 20px; /* Отступы между результатами */
+}
+
 /* Стили для метки вопроса */
-.question label {
-    font-weight: bold; /* Полужирный шрифт для заголовка вопроса */
-    display: block;
+.question label, .result-item p {
+    font-weight: bold; /* Полужирный шрифт для заголовка вопроса и меток */
     margin-bottom: 10px; /* Отступ снизу */
 }
 
@@ -65,15 +73,6 @@ form {
     border: 1px solid #ccc;
     border-radius: 4px; /* Скругленные углы инпутов */
     box-sizing: border-box; /* Учитываем паддинг в ширину инпутов */
-}
-
-/* Стили для блока с результатами */
-#results {
-    background-color: #F5DEB3; /* Цвет фона для блока с результатами */
-    padding: 20px;
-    border-radius: 10px; /* Скругленные углы блока */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
-    margin-bottom: 20px; /* Отступ снизу для блока с результатами */
 }
 
 /* Стили для кнопки */
