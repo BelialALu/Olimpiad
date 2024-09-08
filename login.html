@@ -9,27 +9,31 @@
 </head>
 <body>
     <div class="container">
-        <h1>Вход</h1>
-        <form id="loginForm">
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
-            </div>
-            <div>
-                <label for="password">Пароль:</label>
-                <input type="password" id="password" required>
-            </div>
-            <button type="submit">Войти</button>
-        </form>
-        <button id="forgotPasswordBtn">Забыли пароль?</button>
+        <div class="login-wrapper">
+            <h1>Вход</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit">Войти</button>
+                    <button type="button" id="forgotPasswordBtn">Забыли пароль?</button>
+                </div>
+            </form>
+        </div>
 
         <!-- Модальное окно для сброса пароля -->
-        <div id="forgotPasswordModal" style="display: none;">
-            <div>
-                <span id="closeModalBtn">&times;</span>
+        <div id="forgotPasswordModal" class="modal">
+            <div class="modal-content">
+                <span id="closeModalBtn" class="close">&times;</span>
                 <h2>Сброс пароля</h2>
                 <form id="resetPasswordForm">
-                    <div>
+                    <div class="form-group">
                         <label for="resetEmail">Введите ваш email:</label>
                         <input type="email" id="resetEmail" required>
                     </div>
