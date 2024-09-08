@@ -25,7 +25,7 @@ async function finishQuiz(event) {
     if (user) {
         // Отправляем данные в Firestore
         try {
-            await addDoc(collection(db, 'olimpial_math'), {
+            await addDoc(collection(db, 'olimpiad_math'), {
                 email: user.email,
                 answers: userAnswers,
                 subject: subject,
