@@ -1,24 +1,12 @@
-// quiz.js
-import { app, db } from 'js./firebase.js'; // Путь к файлу firebase.js
-import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+import { db, collection, addDoc } from './firebase.js';
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
 
-// Функция для сохранения результатов в Firestore
-async function saveResults(email, answers, subject) {
-    try {
-        const resultsRef = collection(db, 'olimpiad_math');
-        await addDoc(resultsRef, {
-            email: email,
-            answers: answers,
-            subject: subject,
-            timestamp: new Date() // Добавляет текущую дату и время
-        });
-        console.log('Результаты успешно сохранены');
-    } catch (e) {
-        console.error('Ошибка при сохранении результатов: ', e);
-    }
+// Функция для получения предмета из URL
+function getSubject() {
+    return 'math'; // Устанавливаем предмет как 'math' для упрощения
 }
 
-// Функция для завершения теста
+// Сохранение ответов и переход к результатам
 async function finishQuiz(event) {
     event.preventDefault(); // Предотвращаем отправку формы
 
@@ -32,15 +20,31 @@ async function finishQuiz(event) {
         userAnswers[i] = answer; // Сохраняем ответ в объект
     }
 
+    const user = getAuth().currentUser;
+
+    if (user) {
+        // Отправляем данные в Firestore
+        try {
+            await addDoc(collection(db, 'olimpial_math'), {
+                email: user.email,
+                answers: userAnswers,
+                subject: subject,
+                timestamp: new Date()
+            });
+            console.log('Результаты успешно отправлены в Firestore');
+        } catch (error) {
+            console.error('Ошибка при отправке данных в Firestore: ', error);
+        }
+    } else {
+        console.warn('Пользователь не авторизован');
+    }
+
     // Сохраняем ответы в localStorage
     localStorage.setItem(`quizAnswers_${subject}`, JSON.stringify(userAnswers));
-
-    // Сохранение в Firestore
-    const email = document.getElementById('userEmail').value; // Получаем email из скрытого поля
-    await saveResults(email, userAnswers, subject);
-
     window.location.href = 'results.html'; // Переходим на страницу результатов
 }
 
-// Убедитесь, что ваш обработчик привязан к форме
-document.getElementById('quizForm').addEventListener('submit', finishQuiz);
+// Инициализация страницы
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('quizForm').addEventListener('submit', finishQuiz); // Добавляем обработчик события
+});
