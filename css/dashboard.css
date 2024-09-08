@@ -59,6 +59,19 @@
     color: #000;
     text-decoration: none;
 }
+/* Стили для страницы dashboard */
+#dashboard-container {
+    background-color: #f5cc9b; /* Установка фонового цвета только для страницы dashboard */
+}
+
+/* Стили для блока с контентом на странице dashboard */
+#dashboard-content {
+    background-color: #fff; /* Белый фон для контента, чтобы выделять его на фоне страницы */
+    padding: 20px;
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+}
+
 
 .navbar button {
     margin-top: 10px; /* Отступ сверху для кнопки выхода */
