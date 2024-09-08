@@ -91,4 +91,7 @@ function displayResults() {
 
     resultsHtml = `<h3>Вы правильно ответили на ${correctCount} из 8 вопросов</h3>` + resultsHtml;
     document.getElementById('results').innerHTML = resultsHtml;
+
+    // Перерисовать формулы MathJax
+    MathJax.typesetPromise();
 }
