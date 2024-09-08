@@ -1,8 +1,10 @@
 import { getFirestore, collection, doc, setDoc, Timestamp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+import { app } from './auth.js'; // Импортируйте уже инициализированный экземпляр Firebase
 
-// Инициализация Firestore
-const db = getFirestore(); // Предполагается, что Firebase уже инициализирован в другом месте
+// Инициализация Firestore с использованием существующего экземпляра Firebase
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 // Функция для получения предмета из URL
 function getSubject() {
@@ -12,12 +14,12 @@ function getSubject() {
 // Функция для сохранения данных в Firestore
 async function saveAnswersToFirestore(email, answers) {
     try {
-        const docRef = doc(collection(db, 'quizzes')); // Создает новый документ с уникальным идентификатором
+        const docRef = doc(collection(db, 'olimpiad_math')); // Используем имя коллекции 'olimpiad_math'
         await setDoc(docRef, {
             email: email,
-            subject: 'informatics', // или другой предмет
+            subject: 'informatics', // Или другой предмет
             answers: answers,
-            timestamp: Timestamp.now() // Использует текущее время в формате Timestamp
+            timestamp: Timestamp.now() // Используем текущее время в формате Timestamp
         });
         console.log('Ответы успешно сохранены в Firestore!');
     } catch (e) {
@@ -40,7 +42,6 @@ async function finishQuiz(event) {
     }
 
     // Получаем текущего пользователя
-    const auth = getAuth();
     const user = auth.currentUser;
     const userEmail = user ? user.email : 'unknown'; // Получаем email текущего пользователя
 
